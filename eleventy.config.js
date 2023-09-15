@@ -3,7 +3,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const { EleventyHtmlBasePlugin, EleventyRenderPlugin } = require("@11ty/eleventy");
 
 const pluginImages = require("./eleventy.config.images.js");
 
@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
 	// Official plugins
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
 	eleventyConfig.addPlugin(pluginBundle);
 
 	// Filters
