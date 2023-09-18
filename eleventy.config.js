@@ -3,7 +3,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
-const { EleventyHtmlBasePlugin, EleventyRenderPlugin } = require("@11ty/eleventy");
+const { EleventyI18nPlugin, EleventyHtmlBasePlugin, EleventyRenderPlugin } = require("@11ty/eleventy");
 
 const pluginImages = require("./eleventy.config.images.js");
 
@@ -28,6 +28,9 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 	eleventyConfig.addPlugin(pluginBundle);
+  eleventyConfig.addPlugin(EleventyI18nPlugin, {
+    defaultLanguage: "ru", // Required, this site uses "en"
+  });
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {

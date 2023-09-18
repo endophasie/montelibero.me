@@ -1,0 +1,8 @@
+# Important: Per shadowing rules, URLs for the language-specific
+# content files are served without redirects.
+
+# Redirect for end-user’s browser preference override
+/*  /en/:splat  302   Language=en
+
+# Default
+/*  /ru/:splat  302
