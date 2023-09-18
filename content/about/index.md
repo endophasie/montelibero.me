@@ -1,8 +1,8 @@
 ---
-layout: layouts/base.njk
+layout: layouts/post.njk
 eleventyNavigation:
-  key: About Me
-  order: 3
+  key: Оффлайн встречи
+  order: 2
 ---
 
 # About Me

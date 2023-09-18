@@ -30,10 +30,11 @@
 		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
 	</head>
 	<body>
+		<div class="wrapper">
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
+			<a href="/" class="home-link"><div class="logo">{% include "public/img/logo.svg" %}</div>{{ metadata.title }}</a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
@@ -44,14 +45,22 @@
 				{%- endfor %}
 				</ul>
 			</nav>
+			<div class="lang-switcher">
+				<a href="/en" class="lang-link">ENG</a>
+				<a href="/ru" class="lang-link">RUS</a>
+				<a href="/mne" class="lang-link">MNE</a>
+			</div>
 		</header>
 
 		<main id="skip">
 			{{ content | safe }}
 		</main>
 
-		<footer></footer>
-
+		<footer>
+			{# <div class="logo-footer">{% include "public/img/logo-white.svg" %}</div> #}
+			<p class="copyright">&copy; Третий Клуб Монтелиберо, 2023</p>
+		</footer>
+</div>
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
 	</body>
 </html>
