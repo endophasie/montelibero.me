@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk
 eleventyNavigation:
-  key: Релокация
+  key: Moving to Montenegro
   order: 1
 ---
 
-# Montenegro
+# Why Montenegro?
 
-Why Montenegro?
+

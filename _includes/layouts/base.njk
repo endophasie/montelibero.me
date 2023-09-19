@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html lang="{{ locale }}">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
-		<meta name="description" content="{{ description or metadata.description }}">
+		<title>{{ title }}</title>
+		<meta name="description" content="{{ meta_description }}">
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
@@ -40,15 +40,16 @@
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+				{%- for entry in navigation %}
+					{% set page_url = "/" + locale + "/" + entry.slug + "/" %}
+					<li class="nav-item"><a href="{{ page_url }}"{% if page_url == page.url %} aria-current="page"{% endif %}>{{ entry.label[locale] }}</a></li>
 				{%- endfor %}
 				</ul>
 			</nav>
 			<div class="lang-switcher">
-				<a href="/en" class="lang-link">ENG</a>
-				<a href="/ru" class="lang-link">RUS</a>
-				<a href="/mne" class="lang-link">MNE</a>
+				{%- for lang in metadata.languages %}
+					<a href="/{{ lang.code }}/" class="lang-link" {% if lang.code == locale %} aria-current="language"{% endif %}>{{ lang.label }}</a>
+				{%- endfor %}
 			</div>
 		</header>
 
@@ -58,7 +59,7 @@
 
 		<footer>
 			{# <div class="logo-footer">{% include "public/img/logo-white.svg" %}</div> #}
-			<p class="copyright">&copy; Третий Клуб Монтелиберо, 2023</p>
+			<p class="copyright">&copy; {{ project_of_tfm }}, 2023</p>
 		</footer>
 </div>
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->

@@ -1,0 +1,57 @@
+locale = "en"
+title = "Montelibero"
+meta_description = "Project by Third Fund Of Montelibero"
+project_of_tfm = "Project by Third Fund Of Montelibero"
+
+[what_is_montelibero]
+header = "Что такое Монтелиберо?"
+text = """
+
+"""
+
+[population]
+header = "Рост сообщества"
+text = """
+
+"""
+
+[growth]
+header = "Развитие сообщества"
+text = """
+
+"""
+
+[tokenomics]
+header = "Токеномика"
+text = """
+
+"""
+
+[eurmtl]
+header = "EURMTL"
+text = """
+
+"""
+
+[MTL]
+header = "MTL"
+text = """
+
+"""
+
+[meetings]
+header = "МТЛ-завтраки и МТЛ-ланчи"
+text = """
+"""
+
+[fcm]
+header = "Первый клуб Монтелиберо"
+text = """
+
+"""
+
+[city]
+header = "МТЛ-Сити"
+text = """
+
+"""
