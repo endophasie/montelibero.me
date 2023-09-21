@@ -1,0 +1,9 @@
+
+<script>
+// Normally this page would never be used as Netlify should redirect to the proper page on CDN level
+// This page is for local development and a fallback for Netlify failure.
+if (/^ru\b/.test(navigator.language)) {
+  window.location = '/ru/';
+}
+window.location = '/en/';
+</script>
