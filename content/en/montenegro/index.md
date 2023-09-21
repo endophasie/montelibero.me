@@ -1,5 +1,5 @@
 ---
-layout: layouts/post.njk
+layout: layouts/secondary.njk
 eleventyNavigation:
   key: Moving to Montenegro
   order: 1

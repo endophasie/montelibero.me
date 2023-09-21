@@ -1,5 +1,5 @@
 ---
-layout: layouts/post.njk
+layout: layouts/secondary.njk
 eleventyNavigation:
   key: Бизнес-сообщество
   order: 5

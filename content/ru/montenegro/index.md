@@ -1,5 +1,5 @@
 ---
-layout: layouts/post.njk
+layout: layouts/secondary.njk
 eleventyNavigation:
   key: Релокация
   order: 1
