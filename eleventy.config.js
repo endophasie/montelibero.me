@@ -9,6 +9,8 @@ const { EleventyI18nPlugin, EleventyHtmlBasePlugin } = require("@11ty/eleventy")
 const pluginImages = require("./eleventy.config.images.js");
 const site = require('./_data/metadata.js');
 
+const DEFAULT_LANGUAGE = 'ru';
+
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -29,18 +31,15 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyI18nPlugin, {
-    defaultLanguage: "ru", // Required, this site uses "en"
+    defaultLanguage: DEFAULT_LANGUAGE,
   });
 	eleventyConfig.addPlugin(pluginBundle);
   eleventyConfig.addDataExtension("toml", contents => toml.parse(contents));
 
-  site.languages.map(lang => {
-    eleventyConfig.addCollection(`posts_${lang.code}`, function(collectionApi) {
-        return collectionApi.getFilteredByTag("post").filter(function(item) {
-            return item.data.locale === lang.code
-        });
-    });
-});
+
+  eleventyConfig.addCollection(`pages`, (collection) => {
+    return collection.getFilteredByGlob(`./content/${DEFAULT_LANGUAGE}/**/*`);
+  });
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
