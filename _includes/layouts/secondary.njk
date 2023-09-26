@@ -3,11 +3,11 @@ layout: layouts/base.njk
 ---
 
 <ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+	{# <li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li> #}
 	{%- for tag in tags | filterTagList %}
 	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
 	{%- endfor %}
 </ul>
 
-{{ content | safe }}
+<div class="content">{{ content | safe }}</div>

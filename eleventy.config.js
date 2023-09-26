@@ -1,11 +1,13 @@
 const { DateTime } = require("luxon");
 const markdownItAnchor = require("markdown-it-anchor");
+const toml = require("@iarna/toml");
 
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const { EleventyI18nPlugin, EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 const pluginImages = require("./eleventy.config.images.js");
+const site = require('./_data/metadata.js');
 
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
@@ -26,7 +28,19 @@ module.exports = function(eleventyConfig) {
 	// Official plugins
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(EleventyI18nPlugin, {
+    defaultLanguage: "ru", // Required, this site uses "en"
+  });
 	eleventyConfig.addPlugin(pluginBundle);
+  eleventyConfig.addDataExtension("toml", contents => toml.parse(contents));
+
+  site.languages.map(lang => {
+    eleventyConfig.addCollection(`posts_${lang.code}`, function(collectionApi) {
+        return collectionApi.getFilteredByTag("post").filter(function(item) {
+            return item.data.locale === lang.code
+        });
+    });
+});
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {

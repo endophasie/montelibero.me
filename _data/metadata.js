@@ -1,6 +1,13 @@
 module.exports = {
-	title: "Montelibero",
 	url: "https://montelibero.me/",
-	language: "ru",
-	description: "Montelibero is a libertarian social experiment in Montenegro"
+	languages: [
+    {
+      label: "ENG",
+      code: "en",
+    },
+    {
+      label: "RUS",
+      code: "ru",
+    }
+  ],
 }
