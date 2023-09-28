@@ -6,12 +6,12 @@ layout: layouts/base.njk
 {% block header %}{% endblock %}
 <main>
 	<section>
-		<h2>{{ what_is_montelibero.header }}</h2>
+		<h1>{{ what_is_montelibero.header }}</h1>
 		{{ what_is_montelibero.text | md | safe }}
 	</section>
 
 	<section>
-		<h2>{{ population.header }}</h2>
+		<h1>{{ population.header }}</h1>
 		{{ population.text | md | safe }}
 	</section>
 
@@ -28,5 +28,40 @@ layout: layouts/base.njk
 	<section>
 		<h2>{{ eurmtl.header }}</h2>
 		{{ eurmtl.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ mtl.header }}</h2>
+		{{ mtl.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ meetings.header }}</h2>
+		{{ meetings.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ fcm.header }}</h2>
+		{{ fcm.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ city.header }}</h2>
+		{{ city.text | md | safe }}
+	</section>
+
+		<section>
+		<h2>{{ mtlfest.header }}</h2>
+		{{ mtlfest.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ online.header }}</h2>
+		{{ online.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ join.header }}</h2>
+		{{ join.text | md | safe }}
 	</section>
 </main>
