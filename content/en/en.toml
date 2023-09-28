@@ -1,5 +1,6 @@
 locale = "en"
-title = "Montelibero"
+site_title = "Montelibero"
+site_subtitle = "Free Society Project in Europe"
 meta_description = "Project by Third Fund Of Montelibero"
 project_of_tfm = "Project by Third Fund Of Montelibero"
 

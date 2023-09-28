@@ -7,7 +7,7 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyI18nPlugin, EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 const pluginImages = require("./eleventy.config.images.js");
-const site = require('./_data/metadata.js');
+const md = require('markdown-it')();
 
 const DEFAULT_LANGUAGE = 'ru';
 
@@ -95,6 +95,26 @@ module.exports = function(eleventyConfig) {
 			slugify: eleventyConfig.getFilter("slugify")
 		});
 	});
+
+  eleventyConfig.addFilter("md", (content, opts) => {
+    if (!content) {
+      return;
+    }
+  
+    if (opts) {
+      md.set(opts);
+    }
+  
+    let inline = !content.includes('\n');
+  
+    // If there's quite a bit of content, we want to make sure
+    // it's marked up for readability purposes
+    if (inline && content.length > 200) {
+      inline = false;
+    }
+  
+    return inline ? md.renderInline(content) : md.render(content);
+  });
 
 	// Features to make your build faster (when you need them)
 

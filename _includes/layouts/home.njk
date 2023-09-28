@@ -4,26 +4,29 @@ layout: layouts/base.njk
 {{ content | safe }}
 {{ header }}
 {% block header %}{% endblock %}
-<div class="promo"></div>
-<div class="content">
-	<h2>{{ what_is_montelibero.header }}</h2>
-		<div class="intro">
-			{{ what_is_montelibero.text }}
-		</div>
-	<h2>{{ population.header }}</h2>
-	<div>
-		{{ population.text }}
-	</div>
+<main>
+	<section>
+		<h2>{{ what_is_montelibero.header }}</h2>
+		{{ what_is_montelibero.text | md | safe }}
+	</section>
+
+	<section>
+		<h2>{{ population.header }}</h2>
+		{{ population.text | md | safe }}
+	</section>
+
+	<section>
 		<h2>{{ growth.header }}</h2>
-	<div>
-		{{ growth.text }}
-	</div>
+		{{ growth.text | md | safe }}
+	</section>
+
+	<section>
 		<h2>{{ tokenomics.header }}</h2>
-	<div>
-		{{ tokenomics.text }}
-	</div>
+		{{ tokenomics.text | md | safe }}
+	</section>
+
+	<section>
 		<h2>{{ eurmtl.header }}</h2>
-	<div>
-		{{ eurmtl.text }}
-	</div>
-</div>
+		{{ eurmtl.text | md | safe }}
+	</section>
+</main>
