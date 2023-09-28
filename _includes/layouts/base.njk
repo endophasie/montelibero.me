@@ -20,7 +20,8 @@
 		{#- Add an arbitrary string to the bundle #}
 		{%- css %}* { box-sizing: border-box; }{% endcss %}
 		{#- Add the contents of a file to the bundle #}
-		{%- css %}{% include "public/css/index.css" %}{% endcss %}
+		{% css %}{% include "public/css/pico.classless.min.css" %}{% endcss %}
+		{% css %}{% include "public/css/index.css" %}{% endcss %}
 		{#- Or add from node_modules #}
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
@@ -30,38 +31,44 @@
 		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
 	</head>
 	<body>
-		<div class="wrapper">
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
 		<header>
-			<a href="/" class="home-link"><div class="logo">{% include "public/img/logo.svg" %}</div>{{ metadata.title }}</a>
-
-			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav">
+			<nav class="container-fluid">
+				<ul>
+				<li>
+					<a href="{{ '/' | locale_url }}" class="logo">
+						<div class="logo-title">{{ site_title }}</div>
+						<div class="logo-subtitle">{{ site_subtitle }}</div></a>
+					</li>
+				</ul>
+				<ul>
 				{%- for entry in navigation %}
 					{% set page_url = "/" + locale + "/" + entry.slug + "/" %}
-					<li class="nav-item"><a href="{{ page_url }}"{% if page_url == page.url %} aria-current="page"{% endif %}>{{ entry.label[locale] }}</a></li>
+					<li><a href="{{ page_url }}"{% if page_url == page.url %} aria-current="page"{% endif %}>{{ entry.label[locale] }}</a></li>
+				{%- endfor %}
+				</ul>
+				<ul>
+				{%- for lang in metadata.languages %}
+					<li><a href="/{{ lang.code }}/" class="lang-link" {% if lang.code == locale %} aria-current="language"{% endif %}><img src="/img/language-{{ lang.code }}.png" style="height: 28px" /></a></li>
 				{%- endfor %}
 				</ul>
 			</nav>
-			<div class="lang-switcher">
-				{%- for lang in metadata.languages %}
-					<a href="/{{ lang.code }}/" class="lang-link" {% if lang.code == locale %} aria-current="language"{% endif %}>{{ lang.label }}</a>
-				{%- endfor %}
-			</div>
+			
 		</header>
 
-		<main id="skip">
+		<main>
 			{{ content | safe }}
 		</main>
 
 		<footer>
-			{# <div class="logo-footer">{% include "public/img/logo-white.svg" %}</div> #}
-			<p class="copyright">&copy; {{ project_of_tfm }}, 2023</p>
+			<nav>
+          <ul>
+            <li>
+              <small> {{ project_of_tfm }}, 2023
+							</small>
+						</li>
+					</ul>
+				</nav>
 		</footer>
-</div>
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
 	</body>
 </html>
