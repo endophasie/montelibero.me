@@ -1,10 +1,7 @@
 ---
 layout: layouts/secondary.njk
-eleventyNavigation:
-  key: Moving to Montenegro
-  order: 1
 ---
 
 # Why Montenegro?
 
-
+https://montelibero.org/2021/06/02/why-montenegro/

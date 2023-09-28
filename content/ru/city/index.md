@@ -1,8 +1,5 @@
 ---
 layout: layouts/secondary.njk
-eleventyNavigation:
-  key: MTL-City
-  order: 4
 ---
 
 # Монтелиберо Сити
