@@ -10,7 +10,7 @@
 
 .logo {
 	text-decoration: none;
-	color: black;
+	color: var(--h1-color);
 	font-family: "TenorSans";
 }
 
